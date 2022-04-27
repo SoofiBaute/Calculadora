@@ -18,6 +18,7 @@ let resta = document.getElementById('input-resta');
 let mult = document.getElementById('input-mult');
 let div = document.getElementById('input-div');
 
+let a, b, operacion;
 //EVENTOS
 cero.onclick = function(e){
     result.textContent = result.textContent + "0";
@@ -48,4 +49,71 @@ ocho.onclick = function(e){
 }
 nueve.onclick = function(e){
     result.textContent = result.textContent + "9";
+}
+
+reset.onclick = function(e){
+    resetear();
+}
+
+suma.onclick = function(e){
+    a = result.textContent;
+    operacion = "+"
+    limpiar();
+}
+
+resta.onclick = function(e){
+    a = result.textContent;
+    operacion = "-"
+    limpiar();
+}
+
+mult.onclick = function(e){
+    a = result.textContent;
+    operacion = "*"
+    limpiar();
+}
+
+div.onclick = function(e){
+    a = result.textContent;
+    operacion = "/"
+    limpiar();
+}
+
+igual.onclick = function(e){
+    b = result.textContent;
+    resolver();
+}
+
+function limpiar(){
+    result.textContent ="";
+}
+
+function resetear(){
+    result.textContent ="";
+    a=0;
+    b=0;
+    operacion="";
+}
+
+function resolver(){
+
+    var res;
+
+    switch(operacion){
+        case "+":
+                res= parseFloat(a) + parseFloat(b);
+        break;
+        case "-":
+            res= parseFloat(a) - parseFloat(b);
+        break;
+        case "*":
+            res= parseFloat(a) * parseFloat(b);
+        break;
+        case "/":
+            res= parseFloat(a) / parseFloat(b);
+        break;
+    }
+
+    resetear();
+    result.textContent=res;
 }
